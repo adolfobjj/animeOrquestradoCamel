@@ -1,4 +1,4 @@
-package br.com.onboarding.anime;
+package br.com.onboarding.animeCamel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

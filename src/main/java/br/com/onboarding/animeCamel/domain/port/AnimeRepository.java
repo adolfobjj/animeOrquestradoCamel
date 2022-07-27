@@ -1,6 +1,6 @@
-package br.com.onboarding.anime.domain.port;
+package br.com.onboarding.animeCamel.domain.port;
 
-import br.com.onboarding.anime.domain.domain.Anime;
+import br.com.onboarding.animeCamel.domain.domain.Anime;
 
 import java.util.List;
 

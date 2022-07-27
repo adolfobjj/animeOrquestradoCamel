@@ -1,6 +1,6 @@
-package br.com.onboarding.anime.domain.domain;
+package br.com.onboarding.animeCamel.domain.domain;
 
-import br.com.onboarding.anime.domain.enums.TipoGenero;
+import br.com.onboarding.animeCamel.domain.enums.TipoGenero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
