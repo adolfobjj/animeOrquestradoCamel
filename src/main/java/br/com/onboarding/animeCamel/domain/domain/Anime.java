@@ -1,27 +1,22 @@
 package br.com.onboarding.animeCamel.domain.domain;
 
-import br.com.onboarding.animeCamel.domain.enums.TipoGenero;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import br.com.onboarding.animeCamel.domain.enums.genreType;
+import lombok.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class Anime {
+public class Anime implements Serializable {
 
     private Long id;
-    private String nome;
-    private String nomeAutor;
-    private int anoPublicacao;
-    private int numeroEpisodios;
-    private String sinopse;
-    private TipoGenero tipoGenero;
+    private String name;
+    private String author;
+    private Integer yearPublication;
+    private Integer episodesNumber;
+    private genreType genre;
+    private String synopsis;
 
 }

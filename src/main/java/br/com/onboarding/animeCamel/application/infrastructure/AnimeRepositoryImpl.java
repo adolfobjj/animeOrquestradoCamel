@@ -1,6 +1,5 @@
 package br.com.onboarding.animeCamel.application.infrastructure;
 
-
 import br.com.onboarding.animeCamel.domain.domain.Anime;
 import br.com.onboarding.animeCamel.domain.port.AnimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Repository
 public class AnimeRepositoryImpl implements AnimeRepository {
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public AnimeRepositoryImpl(RestTemplate restTemplate) {
@@ -20,11 +19,29 @@ public class AnimeRepositoryImpl implements AnimeRepository {
 
     @Override
     public List<Anime> findAnime() {
-        return restTemplate.getForEntity("http://localhost:8080/v1/anime-rest-api/", List.class).getBody();
+        //return restTemplate.exchange("http://localhost:8080/v1/anime-rest-api/", HttpMethod.GET, null, List.class).getBody();
+        return List.of(restTemplate.getForEntity("http://localhost:8083/v1/anime-rest-api/", Anime[].class).getBody());
     }
 
     @Override
     public Anime findAnimeById(Long id) {
-        return null;
+        return restTemplate.getForEntity("http://localhost:8083/v1/anime-rest-api/{id}", Anime.class, id).getBody();
     }
+
+    @Override
+    public Anime saveAnime(Anime anime) {
+        return restTemplate.postForEntity("http://localhost:8083/v1/anime-rest-api/save", anime, Anime.class).getBody();
+    }
+
+    @Override
+    public Anime updateAnime(Anime anime) {
+        restTemplate.put("http://localhost:8083/v1/anime-rest-api/{id}", anime, anime.getId());
+        return anime;
+    }
+
+    @Override
+    public void deleteAnime(Long id) {
+        restTemplate.delete("http://localhost:8083/v1/anime-rest-api/{id}", id);
+    }
+
 }

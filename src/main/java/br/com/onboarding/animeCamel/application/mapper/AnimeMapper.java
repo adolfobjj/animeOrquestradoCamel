@@ -1,6 +1,5 @@
 package br.com.onboarding.animeCamel.application.mapper;
 
-
 import br.com.onboarding.animeCamel.application.presentation.representation.AnimeRequestRepresentation;
 import br.com.onboarding.animeCamel.application.presentation.representation.AnimeResponseRepresentation;
 import br.com.onboarding.animeCamel.domain.domain.Anime;
@@ -21,16 +20,18 @@ public class AnimeMapper {
         return modelMapperSupplier.get().map(representation, Anime.class);
     }
 
-    //do domain(service) para representation(espelho do que o usuario recebe de resposta)
     public AnimeResponseRepresentation toRepresentation(Anime anime){
         return modelMapperSupplier.get().map(anime, AnimeResponseRepresentation.class);
     }
 
     public List<AnimeResponseRepresentation> toAnimeResponseRepresentationList(List<Anime> animeList) {
         List<AnimeResponseRepresentation> animeRepresentationList = new ArrayList<>();
-        for (Anime anime : animeList) {
+//        for (Anime anime : animeList) {
+//            animeRepresentationList.add(toRepresentation(anime));
+//        }
+        animeList.forEach(anime -> {
             animeRepresentationList.add(toRepresentation(anime));
-        }
+        });
 
         return animeRepresentationList;
     }
